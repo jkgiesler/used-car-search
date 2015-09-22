@@ -6,25 +6,22 @@ from collections import OrderedDict
 '''
 How the data is formatted:
 
-Basic info is spread out over multiple lines labeled with the itemprop name
-by formatting and splitting on \n and removing all lines that are blank we get the text
-back cleanly
+Basic info is spread out over multiple lines labeled with the itemprop "name".
+By formatting and splitting on \n and removing all lines that are blank we get the text
+back cleanly.
 
-Price information is in its own span labeled with the class r-title-price. One of these
-classes has multiple lines and that is the one I choose to eliminate duplicates
+Price information is in its own span labeled with the class r-title-price. This makes it the easiest
+to scrape.
 
-Mileage information does not have it's own nice label. so we have to search for all table
-elements with the label 'val'. To do this I have to iterate through and only grab the
-element if it contains Miles in the text.
+Mileage information does not have it's own nice label. Instead, we have to search for all table
+elements with the label 'val' for the string 'Miles'.
 
-Finally the links are by far the ugliest. There are two types of links by the looks 
-of it, external and internal. There are duplicate links and there doesn't seem to be 
-a better way of finding them than searching all hrefs for the word 'detail'.
+Finally the links require by the most cleaning. There are two types of links by the looks 
+of it, some direct to vast listings and others direct to other websites. There are duplicate links 
+and there doesn't seem to be a better way of finding the links than searching all hrefs for the 
+word 'detail'. Once we have all of these links we need to remove all duplicates.
 
-If the link is an internal link we have to add the base url to it. If the link is an 
-external link we can just save it as is.
-
-How this could fail: 
+How this code could fail: 
 - website drops the convention of including Miles in every link named miles
 - website does not include 2 miles tag per every car
 - website changes their link methods
