@@ -110,7 +110,7 @@ def build_db(make,model,zip,verbose=True):
 	driver function:
 
 	Given make, model, and location write price, mileage ,basic information and 
-	a tab seperated text file.
+	a tab separated text file.
 	'''
 	base_url = 'http://www.vast.com'
 	url = base_url+'/cars/make-{make}/model-{model}/location-{zip}'
